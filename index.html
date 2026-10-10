@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Moja strona</title>
+
+    <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.cdnfonts.com/css/fantastic" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
+
+    <script src="main.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <h1>FABUŁY DO RP</h1>
+    </header>
+
+    <main>
+        <section class="content">
+            <div id="plot-list">
+                <h2>Motywy fabularne</h2>
+                <ul id="plot"></ul>
+            </div>
+
+            <div id="documentView" hidden>
+                <button id="back" type="button">
+                    ← Powrót do motywów
+                </button>
+
+                <h2 id="plotTitle"></h2>
+
+                <div id="loadingBar" class="loading-bar" hidden>
+                    <div class="loading-text">
+                        Ładowanie fabuły...
+                    </div>
+
+                    <div class="loading-track">
+                        <div class="loading-progress"></div>
+                    </div>
+                </div>
+
+                <div id="drive">
+                    <iframe
+                        id="document"
+                        title="Dokument z fabułą RP"
+                        loading="eager"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2026 Ghostshine DO NOT REPOST WITHOUT PERMISSION
+    </footer>
+</body>
+</html>

@@ -9,7 +9,7 @@ const plots = [
         url: "https://docs.google.com/document/d/10seAi5NJh5bAoonMO4mvoaHz2ZrMUjTYoYgnHAiRISI/preview"
     },
     {
-        name: "Sławni",
+        name: "Popular",
         url: "https://docs.google.com/document/d/1SV3dacLoyTXY1wOuNnZoCVOV1WLKlp-dMrw4Oer8x9Y/preview"
     }
 ];

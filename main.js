@@ -11,6 +11,10 @@ const plots = [
     {
         name: "Popular",
         url: "https://docs.google.com/document/d/1SV3dacLoyTXY1wOuNnZoCVOV1WLKlp-dMrw4Oer8x9Y/preview"
+    }, 
+    {
+        name: "Casual",
+        url: "https://docs.google.com/document/d/1Jvp5BjHx6-os4UPa5YetNBKoFIn--jWQ4ChpdIK58g8/preview"
     }
 ];
 

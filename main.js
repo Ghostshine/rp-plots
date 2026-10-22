@@ -18,7 +18,8 @@ const plots = [
     }
 ];
 
-let currentUrlState = "":
+// Memory state tracker - replaces HTML dataset and keeps raw URL hidden
+let currentUrlState = ""; 
 
 // Get HTML elements
 const list = document.getElementById("plot");
@@ -44,7 +45,6 @@ plots.forEach((plot) => {
     list.appendChild(listItem);
 });
 
-
 // Open the selected plot
 function openPlot(plot) {
     title.textContent = plot.name;
@@ -54,8 +54,11 @@ function openPlot(plot) {
 
     const loadingBar = document.getElementById("loadingBar");
 
-    if (currentUrlState !== plot.url) {
-        // Hide the previous document
+    // Decode Base64 string back to the real URL only in RAM
+    const decodedUrl = atob(plot.url);
+
+    // Check variable in RAM instead of reading from HTML DOM dataset
+    if (currentUrlState !== decodedUrl) {
         doc.classList.add("loading");
         loadingBar.hidden = false;
 
@@ -63,20 +66,18 @@ function openPlot(plot) {
         doc.onload = () => {
             doc.classList.remove("loading");
             loadingBar.hidden = true;
-
-            doc.removeAttribute('src'):
         };
 
-        // Load the selected document
-        currentUrlState = plot.url;
-        doc.src = plot.url;
+        // Save decoded URL strictly inside JavaScript runtime
+        currentUrlState = decodedUrl;
+        
+        // Inject decoded URL directly to src
+        doc.src = decodedUrl;
     } else {
-        // Show the already loaded document
         doc.classList.remove("loading");
         loadingBar.hidden = true;
     }
 
-    // Scroll to the top
     window.scrollTo({
         top: 0,
         behavior: "auto"
@@ -88,7 +89,6 @@ backButton.addEventListener("click", () => {
     docView.hidden = true;
     listView.hidden = false;
 
-    // Keep the document loaded for faster reopening
     window.scrollTo({
         top: 0,
         behavior: "auto"

@@ -2,7 +2,7 @@
 const plots = [
     {
         name: "Arrangement Marriage",
-        url: "aHR0cHM6Ly9nb29nbGUuY29t"
+        url: "aHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vZG9jdW1lbnQvZC8xbzJSenV6dlh1X0hlMWk0bTFjMVZEX3lnTnZNY3ByX2x3QzF4cTBZaVMtMC9wcmV2aWV3"
     },
     {
         name: "Fantasy",
@@ -17,6 +17,7 @@ const plots = [
         url: "aHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vZG9jdW1lbnQvZC8xSnZwNUJoeDYtb3M0VVBhNVlldE5CS29GSW4tLWpXUTRDcGRJSzU4ZzgvcHJldmlldw=="
     }
 ];
+
 
 // Memory state tracker - replaces HTML dataset
 let currentUrlState = "";

@@ -2,7 +2,7 @@
 const plots = [
     {
         name: "Arrangement Marriage",
-        url: "aHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vZG9jdW1lbnQvZC8xbzJSenV6dlh1X0hlMWk0bTFjMVZEX3lnTnZNY3ByX2x3QzF4cTBZaVMtMC9wcmV2aWV3"
+        url: "aHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vZG9jdW1lbnQvZC8xbzJSWnV6dlh1X0hlMWs0bTFjMVZEX3lnTnZNY3ByX2x3QzF4cTBZaVMtMC9wcmV2aWV3"
     },
     {
         name: "Fantasy",

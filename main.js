@@ -18,6 +18,8 @@ const plots = [
     }
 ];
 
+let currentUrlState = "":
+
 // Get HTML elements
 const list = document.getElementById("plot");
 const listView = document.getElementById("plot-list");
@@ -42,7 +44,7 @@ plots.forEach((plot) => {
     list.appendChild(listItem);
 });
 
-// Open the selected plot
+
 // Open the selected plot
 function openPlot(plot) {
     title.textContent = plot.name;
@@ -52,7 +54,7 @@ function openPlot(plot) {
 
     const loadingBar = document.getElementById("loadingBar");
 
-    if (doc.dataset.currentUrl !== plot.url) {
+    if (currentUrlState !== plot.url) {
         // Hide the previous document
         doc.classList.add("loading");
         loadingBar.hidden = false;
@@ -61,10 +63,12 @@ function openPlot(plot) {
         doc.onload = () => {
             doc.classList.remove("loading");
             loadingBar.hidden = true;
+
+            doc.removeAttribute('src'):
         };
 
         // Load the selected document
-        doc.dataset.currentUrl = plot.url;
+        currentUrlState = plot.url;
         doc.src = plot.url;
     } else {
         // Show the already loaded document

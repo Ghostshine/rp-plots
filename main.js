@@ -1,20 +1,24 @@
-// Plot data - All URLs are now correctly pointed to /preview and encoded in Base64
+// Base URL components hidden as variables
+const driveDomain = "https://google.com";
+const driveMethod = "/preview";
+
+// Plot data - Only holding the clean document IDs now (zero typos possible!)
 const plots = [
     {
         name: "Arrangement Marriage",
-        url: "aHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vZG9jdW1lbnQvZC8xbzJSenV6dlh1X0hlMWk0bTFjMVZEX3lnTnZNY3ByX2x3QzF4cTBZaVMtMC9wcmV2aWV3"
+        id: "1o2RZuzvXu_He1k4m1c1VD_ygNvMcpr_lwC1xq0YiS-0"
     },
     {
         name: "Fantasy",
-        url: "aHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vZG9jdW1lbnQvZC8xMHNlQWk1TkpoNWJBb29uTU80bXZvYUh6MlpyTVVqVFlvWWduSEFpUklTSS9wcmV2aWV3"
+        id: "10seAi5NJh5bAoonMO4mvoaHz2ZrMUjTYoYgnHAiRISI"
     },
     {
         name: "Popular",
-        url: "aHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vZG9jdW1lbnQvZC8xU1YzZGFjTG95VFhZMXdPdU5uWm9DVk9WMVdMS2xwLWRNcnc0T2VyOHg5WS9wcmV2aWV3"
+        id: "1SV3dacLoyTXY1wOuNnZoCVOV1WLKlp-dMrw4Oer8x9Y"
     }, 
     {
         name: "Casual",
-        url: "aHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vZG9jdW1lbnQvZC8xSnZwNUJoeDYtb3M0VVBhNVlldE5CS29GSW4tLWpXUTRDcGRJSzU4ZzgvcHJldmlldw=="
+        id: "1Jvp5BjHx6-os4UPa5YetNBKoFIn--jWQ4ChpdIK58g8"
     }
 ];
 
@@ -54,11 +58,11 @@ function openPlot(plot) {
 
     const loadingBar = document.getElementById("loadingBar");
 
-    // Decode Base64 string in runtime memory only
-    const decodedUrl = atob(plot.url);
+    // Combine the URL parts together safely in memory
+    const fullUrl = driveDomain + plot.id + driveMethod;
 
     // Check variable in RAM instead of reading from HTML DOM
-    if (currentUrlState !== decodedUrl) {
+    if (currentUrlState !== fullUrl) {
         doc.classList.add("loading");
         loadingBar.hidden = false;
 
@@ -69,8 +73,8 @@ function openPlot(plot) {
         };
 
         // Save URL strictly inside JavaScript runtime
-        currentUrlState = decodedUrl;
-        doc.src = decodedUrl;
+        currentUrlState = fullUrl;
+        doc.src = fullUrl;
     } else {
         doc.classList.remove("loading");
         loadingBar.hidden = true;

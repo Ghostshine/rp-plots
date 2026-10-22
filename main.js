@@ -1,24 +1,20 @@
-// Base URL components hidden as variables
-const driveDomain = "https://google.com";
-const driveMethod = "/preview";
-
-// Plot data - Only holding the clean document IDs now (zero typos possible!)
+// Plot data - Czyste, kompletne linki zakodowane w Base64 (zawierają już całe https://.../preview)
 const plots = [
     {
         name: "Arrangement Marriage",
-        id: "aHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vZG9jdW1lbnQvZC8xbzJSWnV6dlh1X0hlMWs0bTFjMVZEX3lnTnZNY3ByX2x3QzF4cTBZaVMtMC9lZGl0P3VzcD1zaGFyaW5n"
+        url: "aHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vZG9jdW1lbnQvZC8xbzJSenV6dlh1X0hlMWk0bTFjMVZEX3lnTnZNY3ByX2x3QzF4cTBZaVMtMC9wcmV2aWV3"
     },
     {
         name: "Fantasy",
-        id: "aHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vZG9jdW1lbnQvZC8xMHNlQWk1TkpoNWJBb29uTU80bXZvYUh6MlpyTVVqVFlvWWduSEFpUklTSS9lZGl0P3VzcD1zaGFyaW5n"
+        url: "aHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vZG9jdW1lbnQvZC8xMHNlQWk1TkpoNWJBb29uTU80bXZvYUh6MlpyTVVqVFlvWWduSEFpUklTSS9wcmV2aWV3"
     },
     {
         name: "Popular",
-        id: "aHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vZG9jdW1lbnQvZC8xU1YzZGFjTG95VFhZMXdPdU5uWm9DVk9WMVdMS2xwLWRNcnc0T2VyOHg5WS9lZGl0P3VzcD1zaGFyaW5n"
+        url: "aHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vZG9jdW1lbnQvZC8xU1YzZGFjTG95VFhZMXdPdU5uWm9DVk9WMVdMS2xwLWRNcnc0T2VyOHg5WS9wcmV2aWV3"
     }, 
     {
         name: "Casual",
-        id: "aHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vZG9jdW1lbnQvZC8xSnZwNUJqSHg2LW9zNFVQYTVZZXROQktvRkluLS1qV1E0Q2hwZElLNThnOC9lZGl0P3VzcD1zaGFyaW5n"
+        url: "aHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vZG9jdW1lbnQvZC8xSnZwNUJoeDYtb3M0VVBhNVlldE5CS29GSW4tLWpXUTRDcGRJSzU4ZzgvcHJldmlldw=="
     }
 ];
 
@@ -58,11 +54,11 @@ function openPlot(plot) {
 
     const loadingBar = document.getElementById("loadingBar");
 
-    // Combine the URL parts together safely in memory
-    const fullUrl = driveDomain + plot.id + driveMethod;
+    // Decode the full Base64 string directly into a working URL
+    const decodedUrl = atob(plot.url);
 
     // Check variable in RAM instead of reading from HTML DOM
-    if (currentUrlState !== fullUrl) {
+    if (currentUrlState !== decodedUrl) {
         doc.classList.add("loading");
         loadingBar.hidden = false;
 
@@ -73,8 +69,8 @@ function openPlot(plot) {
         };
 
         // Save URL strictly inside JavaScript runtime
-        currentUrlState = fullUrl;
-        doc.src = fullUrl;
+        currentUrlState = decodedUrl;
+        doc.src = decodedUrl;
     } else {
         doc.classList.remove("loading");
         loadingBar.hidden = true;

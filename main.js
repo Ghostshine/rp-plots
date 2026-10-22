@@ -17,8 +17,7 @@ const plots = [
         url: "https://docs.google.com/document/d/1Jvp5BjHx6-os4UPa5YetNBKoFIn--jWQ4ChpdIK58g8/preview"
     }
 ];
-
-// Memory state tracker - replaces HTML dataset and keeps raw URL hidden
+// Memory state tracker
 let currentUrlState = ""; 
 
 // Get HTML elements
@@ -28,6 +27,7 @@ const docView = document.getElementById("documentView");
 const doc = document.getElementById("document");
 const title = document.getElementById("plotTitle");
 const backButton = document.getElementById("back");
+const loadingBar = document.getElementById("loadingBar");
 
 // Generate the plot list
 plots.forEach((plot) => {
@@ -52,26 +52,15 @@ function openPlot(plot) {
     listView.hidden = true;
     docView.hidden = false;
 
-    const loadingBar = document.getElementById("loadingBar");
-
-    // Decode Base64 string back to the real URL only in RAM
+    // Decode Base64 string into plain text URL
     const decodedUrl = atob(plot.url);
 
-    // Check variable in RAM instead of reading from HTML DOM dataset
     if (currentUrlState !== decodedUrl) {
         doc.classList.add("loading");
         loadingBar.hidden = false;
 
-        // Handle document loading
-        doc.onload = () => {
-            doc.classList.remove("loading");
-            loadingBar.hidden = true;
-        };
-
-        // Save decoded URL strictly inside JavaScript runtime
+        // Save URL in JavaScript state and set iframe source
         currentUrlState = decodedUrl;
-        
-        // Inject decoded URL directly to src
         doc.src = decodedUrl;
     } else {
         doc.classList.remove("loading");
@@ -83,6 +72,15 @@ function openPlot(plot) {
         behavior: "auto"
     });
 }
+
+// GLOBAL HANDLER FOR LOADING STATE - fixed the blank iframe bug
+doc.onload = () => {
+    // Only trigger if iframe actually has a source loaded
+    if (doc.src && doc.src !== "about:blank") {
+        doc.classList.remove("loading");
+        loadingBar.hidden = true;
+    }
+};
 
 // Return to the plot list
 backButton.addEventListener("click", () => {

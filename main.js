@@ -1,4 +1,4 @@
-// Plot data - URLs encoded in Base64 format
+// Plot data - All URLs are now correctly pointed to /preview and encoded in Base64
 const plots = [
     {
         name: "Arrangement Marriage",
@@ -17,7 +17,6 @@ const plots = [
         url: "aHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vZG9jdW1lbnQvZC8xSnZwNUJoeDYtb3M0VVBhNVlldE5CS29GSW4tLWpXUTRDcGRJSzU4ZzgvcHJldmlldw=="
     }
 ];
-
 
 // Memory state tracker - replaces HTML dataset
 let currentUrlState = "";
@@ -92,4 +91,4 @@ backButton.addEventListener("click", () => {
         top: 0,
         behavior: "auto"
     });
-})
+});

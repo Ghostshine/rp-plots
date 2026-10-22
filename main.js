@@ -1,4 +1,4 @@
-// Plot data - URLs encoded in Base64
+// Plot data - URLs encoded in Base64 format
 const plots = [
     {
         name: "Arrangement Marriage",
@@ -18,8 +18,8 @@ const plots = [
     }
 ];
 
-// Memory state tracker
-let currentUrlState = ""; 
+// Memory state tracker - replaces HTML dataset
+let currentUrlState = "";
 
 // Get HTML elements
 const list = document.getElementById("plot");
@@ -28,7 +28,6 @@ const docView = document.getElementById("documentView");
 const doc = document.getElementById("document");
 const title = document.getElementById("plotTitle");
 const backButton = document.getElementById("back");
-const loadingBar = document.getElementById("loadingBar");
 
 // Generate the plot list
 plots.forEach((plot) => {
@@ -53,14 +52,23 @@ function openPlot(plot) {
     listView.hidden = true;
     docView.hidden = false;
 
-    // Decode Base64 string into plain text URL
+    const loadingBar = document.getElementById("loadingBar");
+
+    // Decode Base64 string in runtime memory only
     const decodedUrl = atob(plot.url);
 
+    // Check variable in RAM instead of reading from HTML DOM
     if (currentUrlState !== decodedUrl) {
         doc.classList.add("loading");
         loadingBar.hidden = false;
 
-        // Save URL in JavaScript state and set iframe source
+        // Handle document loading
+        doc.onload = () => {
+            doc.classList.remove("loading");
+            loadingBar.hidden = true;
+        };
+
+        // Save URL strictly inside JavaScript runtime
         currentUrlState = decodedUrl;
         doc.src = decodedUrl;
     } else {
@@ -74,15 +82,6 @@ function openPlot(plot) {
     });
 }
 
-// GLOBAL HANDLER FOR LOADING STATE - fixed the blank iframe bug
-doc.onload = () => {
-    // Only trigger if iframe actually has a source loaded
-    if (doc.src && doc.src !== "about:blank") {
-        doc.classList.remove("loading");
-        loadingBar.hidden = true;
-    }
-};
-
 // Return to the plot list
 backButton.addEventListener("click", () => {
     docView.hidden = true;
@@ -92,4 +91,4 @@ backButton.addEventListener("click", () => {
         top: 0,
         behavior: "auto"
     });
-});
+})

@@ -6,19 +6,19 @@ const driveMethod = "/preview";
 const plots = [
     {
         name: "Arrangement Marriage",
-        id: "1o2RZuzvXu_He1k4m1c1VD_ygNvMcpr_lwC1xq0YiS-0"
+        id: "aHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vZG9jdW1lbnQvZC8xbzJSWnV6dlh1X0hlMWs0bTFjMVZEX3lnTnZNY3ByX2x3QzF4cTBZaVMtMC9lZGl0P3VzcD1zaGFyaW5n"
     },
     {
         name: "Fantasy",
-        id: "10seAi5NJh5bAoonMO4mvoaHz2ZrMUjTYoYgnHAiRISI"
+        id: "aHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vZG9jdW1lbnQvZC8xMHNlQWk1TkpoNWJBb29uTU80bXZvYUh6MlpyTVVqVFlvWWduSEFpUklTSS9lZGl0P3VzcD1zaGFyaW5n"
     },
     {
         name: "Popular",
-        id: "1SV3dacLoyTXY1wOuNnZoCVOV1WLKlp-dMrw4Oer8x9Y"
+        id: "aHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vZG9jdW1lbnQvZC8xU1YzZGFjTG95VFhZMXdPdU5uWm9DVk9WMVdMS2xwLWRNcnc0T2VyOHg5WS9lZGl0P3VzcD1zaGFyaW5n"
     }, 
     {
         name: "Casual",
-        id: "1Jvp5BjHx6-os4UPa5YetNBKoFIn--jWQ4ChpdIK58g8"
+        id: "aHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vZG9jdW1lbnQvZC8xSnZwNUJqSHg2LW9zNFVQYTVZZXROQktvRkluLS1qV1E0Q2hwZElLNThnOC9lZGl0P3VzcD1zaGFyaW5n"
     }
 ];
 

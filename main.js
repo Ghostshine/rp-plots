@@ -14,7 +14,7 @@ const plots = [
     }, 
     {
         name: "Casual",
-        url: "aHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vZG9jdW1lbnQvZC8xSnZwNUJoeDYtb3M0VVBhNVlldE5CS29GSW4tLWpXUTRDcGRJSzU4ZzgvcHJldmlldw=="
+        url: "aHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vZG9jdW1lbnQvZC8xSnZwNUJqSHg2LW9zNFVQYTVZZXROQktvRkluLS1qV1E0Q2hwZElLNThnOC9wcmV2aWV3"
     }
 ];
 

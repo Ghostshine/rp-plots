@@ -1,22 +1,23 @@
-// Plot data
+// Plot data - URLs encoded in Base64
 const plots = [
     {
         name: "Arrangement Marriage",
-        url: "https://docs.google.com/document/d/1o2RZuzvXu_He1k4m1c1VD_ygNvMcpr_lwC1xq0YiS-0/preview"
+        url: "aHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vZG9jdW1lbnQvZC8xbzJSenV6dlh1X0hlMWk0bTFjMVZEX3lnTnZNY3ByX2x3QzF4cTBZaVMtMC9wcmV2aWV3"
     },
     {
         name: "Fantasy",
-        url: "https://docs.google.com/document/d/10seAi5NJh5bAoonMO4mvoaHz2ZrMUjTYoYgnHAiRISI/preview"
+        url: "aHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vZG9jdW1lbnQvZC8xMHNlQWk1TkpoNWJBb29uTU80bXZvYUh6MlpyTVVqVFlvWWduSEFpUklTSS9wcmV2aWV3"
     },
     {
         name: "Popular",
-        url: "https://docs.google.com/document/d/1SV3dacLoyTXY1wOuNnZoCVOV1WLKlp-dMrw4Oer8x9Y/preview"
+        url: "aHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vZG9jdW1lbnQvZC8xU1YzZGFjTG95VFhZMXdPdU5uWm9DVk9WMVdMS2xwLWRNcnc0T2VyOHg5WS9wcmV2aWV3"
     }, 
     {
         name: "Casual",
-        url: "https://docs.google.com/document/d/1Jvp5BjHx6-os4UPa5YetNBKoFIn--jWQ4ChpdIK58g8/preview"
+        url: "aHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vZG9jdW1lbnQvZC8xSnZwNUJoeDYtb3M0VVBhNVlldE5CS29GSW4tLWpXUTRDcGRJSzU4ZzgvcHJldmlldw=="
     }
 ];
+
 // Memory state tracker
 let currentUrlState = ""; 
 
